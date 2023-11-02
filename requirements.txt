@@ -1,0 +1,6 @@
+speedtest-cli
+pyfiglet
+psutil
+termcolor
+colorama
+tqdm
