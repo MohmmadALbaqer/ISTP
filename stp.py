@@ -7,7 +7,7 @@ import random
 import pyfiglet
 from time import sleep
 from tqdm import tqdm
-from colorama import Fore, init
+from colorama import Fore, Style
 from termcolor import colored
 
 def wait_with_spinner(seconds):
@@ -24,22 +24,33 @@ def wait_with_spinner(seconds):
 wait_time = 2.5
 wait_with_spinner(wait_time)
 
-colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
+colors = ['grey', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white',
+          'on_grey', 'on_red', 'on_green', 'on_yellow']
+
 selected_color = random.choice(colors)
 
-text = 'R 9 4 X S'
+text = 'S T P'
+
 lo = pyfiglet.figlet_format(text)
 colored_lo = colored(lo, color=selected_color)
+
 print(colored_lo)
 
-text1 = "INSTAGRAM ======> https://www.instagram.com/r94xs/"
-colored_text1 = colored(text1, 'green')
 
-text2 = "GitHub ======> https://www.github.com/MohmmadALbaqer/"
-colored_text2 = colored(text2, 'green')
+print("+------------------+")
+print("| Speed Test Ping  |")
+print("+------------------+")
 
-print(colored_text1)
-print(colored_text2)
+
+
+insta_text = (
+    "--------------------------------------------------\n"
+    f"{Fore.RED}INSTAGRAM{Fore.YELLOW} ==> {Fore.CYAN}https://www.instagram.com/r94xs/{Style.RESET_ALL}   \n"
+    f"{Fore.RED}GitHub{Fore.YELLOW} ==> {Fore.CYAN}https://www.github.com/MohmmadALbaqer/{Style.RESET_ALL}   \n"
+    "--------------------------------------------------"
+)
+print(insta_text)
+
 
 text = "LOADING..."
 colored_text = colored(text, 'green')
