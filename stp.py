@@ -24,8 +24,7 @@ def wait_with_spinner(seconds):
 wait_time = 2.5
 wait_with_spinner(wait_time)
 
-colors = ['grey', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white',
-          'on_grey', 'on_red', 'on_green', 'on_yellow']
+colors = ['grey', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
 
 selected_color = random.choice(colors)
 
