@@ -8,3 +8,11 @@ $ python3 install.py
 $ python3 stp.py
 # password (r94xs)
 ```
+
+### updateing tool
+
+```
+$ cd STP
+$ git pull origin master
+
+```
