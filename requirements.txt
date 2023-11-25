@@ -4,5 +4,6 @@ psutil
 termcolor
 colorama
 tqdm
-tkinter
+init
+Style
 socket
