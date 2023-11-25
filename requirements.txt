@@ -4,6 +4,7 @@ psutil
 termcolor
 colorama
 tqdm
-init
+Fore
 Style
-socket
+getpass
+subprocess
