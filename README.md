@@ -12,10 +12,14 @@ $ python3 stp.py
 ### updating tool
 
 ```
-$ cd STP
-
-### OR
 $ python3 update.py
-$ git pull origin master
+```
 
+
+
+
+### OR 
+
+```
+$ git pull origin master
 ```
