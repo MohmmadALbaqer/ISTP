@@ -7,7 +7,7 @@ import random
 import pyfiglet
 from time import sleep
 from tqdm import tqdm
-from colorama import Fore, Style
+from colorama import Fore, Style, init
 from termcolor import colored
 
 def wait_with_spinner(seconds):
@@ -35,32 +35,52 @@ colored_lo = colored(lo, color=selected_color)
 
 print(colored_lo)
 
+art = '''
++----------------------------+
+|  .               .         |
+| .´  ·  .     .  ·  `.      |
+| :  :  :  (¯)  :  :  :      |
+| `.  ·  ` /¯\ ´  ·  .´      |
+|   `     /¯¯¯\     ´        |
++----------------------------+
+|     Speed Test Ping        |
++----------------------------+
+'''
 
-print("+------------------+")
-print("| Speed Test Ping  |")
-print("+------------------+")
+colored_art = colored(art, 'white')
+
+colored_art = colored_art.replace('Speed', colored('Speed', 'green'))
+colored_art = colored_art.replace('Test', colored('Test', 'red'))
+colored_art = colored_art.replace('Ping', colored('Ping', 'yellow'))
+
+print(colored_art)
 
 
 
 insta_text = (
-    "--------------------------------------------------\n"
+    "+----------------------------------------------------+\n"
     f"{Fore.RED}INSTAGRAM{Fore.YELLOW} ==> {Fore.CYAN}https://www.instagram.com/r94xs/{Style.RESET_ALL}   \n"
-    f"{Fore.RED}GitHub{Fore.YELLOW} ==> {Fore.CYAN}https://www.github.com/MohmmadALbaqer/{Style.RESET_ALL}   \n"
-    "--------------------------------------------------"
+    f"{Fore.RED}GitHub{Fore.YELLOW} =====> {Fore.CYAN}https://www.github.com/MohmmadALbaqer/{Style.RESET_ALL}   \n"
+    "+----------------------------------------------------+"
 )
 print(insta_text)
 
 
-text = "LOADING..."
-colored_text = colored(text, 'green')
+def print_loading():
+    loading_text = colored("[*]", "blue") + colored("Loading", "red") + colored("...", "yellow")
+    
+    for char in loading_text:
+        print(char, end='', flush=True)
+        time.sleep(0.1)
 
-print(colored_text)
+print_loading()
+
+print("")
 
 required_libraries = ["speedtest-cli", "pyfiglet", "psutil"]
 
 missing_libraries = []
 
-# Check for missing libraries and install them if needed
 for library in required_libraries:
     try:
         result = subprocess.check_output(["pip", "show", library], text=True)
@@ -68,7 +88,7 @@ for library in required_libraries:
         missing_libraries.append(library)
 
 if not missing_libraries:
-    # Prompt for an access code
+
     password = getpass.getpass("Enter the access code: ")
 
     if password == "r94xs":
@@ -76,30 +96,25 @@ if not missing_libraries:
         init(autoreset=True)
         print(Fore.GREEN + "GETTING BEST AVAILABLE SERVERS, UPLOADING & DOWNLOADING SPEED.....")
 
-        # Initializing the SpeedTest instance
         st = speedtest.Speedtest()
-        st.get_best_server()  # Get the most optimal server available
+        st.get_best_server()
 
-        # Display a progress bar
         for _ in tqdm(range(10), colour="green", desc="Finding Optimal Server"):
             sleep(0.05)
 
-        st.download()  # Get downloading speed
+        st.download()
         for _ in tqdm(range(10), colour="cyan", desc="Getting Download Speed"):
             sleep(0.05)
 
-        st.upload()  # Get uploading Speed
+        st.upload()
         for _ in tqdm(range(10), colour="red", desc="Getting Upload Speed"):
             sleep(0.05)
 
-        # Save all these elements in a dictionary
         res_dict = st.results.dict()
 
-        # Assign to variables with a specific format
         dwnl = f"{res_dict['download'] / 10**6:.2f}"
         upl = f"{res_dict['upload'] / 10**6:.2f}"
 
-        # Display results in a nice looking table using colorama features
         print("")
         print(Fore.MAGENTA + "="*80)
         print(Fore.GREEN + "INTERNET SPEED TEST RESULTS:".center(80))
