@@ -9,10 +9,13 @@ $ python3 stp.py
 # password (r94xs)
 ```
 
-### updateing tool
+### updating tool
 
 ```
 $ cd STP
+
+### OR
+$ python3 update.py
 $ git pull origin master
 
 ```
