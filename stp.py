@@ -1,4 +1,5 @@
 import sys
+import os
 import time
 import speedtest
 import subprocess
@@ -9,6 +10,8 @@ from time import sleep
 from tqdm import tqdm
 from colorama import Fore, Style, init
 from termcolor import colored
+
+os.system("clear")
 
 def wait_with_spinner(seconds):
     symbols = "/-|\\"
@@ -103,7 +106,7 @@ if not missing_libraries:
             sleep(0.05)
 
         st.download()
-        for _ in tqdm(range(10), colour="cyan", desc="Getting Download Speed"):
+        for _ in tqdm(range(10), colour="yellow", desc="Getting Download Speed"):
             sleep(0.05)
 
         st.upload()
