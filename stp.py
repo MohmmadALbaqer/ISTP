@@ -2,41 +2,68 @@ import sys
 import os
 import time
 import speedtest
-import subprocess
+import requests
 import getpass
 import random
-import pyfiglet
 from time import sleep
 from tqdm import tqdm
 from colorama import Fore, Style, init
 from termcolor import colored
-
 os.system("clear")
 
-def wait_with_spinner(seconds):
-    symbols = "/-|\\"
+def spin():
+    delay = 0.25
+    spinner = ['█■■■■', '■█■■■', '■■█■■', '■■■█■', '■■■■█']
 
-    for _ in range(int(seconds)):
-        for symbol in symbols:
-            sys.stdout.write(f"\rPlease wait {symbol}  ")
+    for _ in range(1):
+        for i in spinner:
+            message = f"[*] {Fore.BLUE}Checking your internet connection...[{i}]{Style.RESET_ALL}"
+            colored_message = colored(message, 'blue', attrs=['bold'])
+            sys.stdout.write(f"\r{colored_message}   ")
             sys.stdout.flush()
-            time.sleep(0.25)
+            time.sleep(delay)
 
-    sys.stdout.write("\r" + " " * 20 + "\r")
+    sys.stdout.write("\r")
+    sys.stdout.flush()
+    done_message = colored("[+] Your Internet connection has been verified", 'yellow', attrs=['bold'])
+    sys.stdout.write("\033[K") 
+    print(done_message)
+    time.sleep(3)
 
-wait_time = 2.5
-wait_with_spinner(wait_time)
+spin()
 
-colors = ['grey', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
+print(1*"\n")
 
-selected_color = random.choice(colors)
+def check_internet_connection():
+    try:
+        response = requests.get('http://www.google.com', timeout=5)
+        return True
+    except requests.ConnectionError:
+        return False
 
-text = 'S T P'
+if check_internet_connection():
+    print(f"{Fore.GREEN}Internet connection is available. You can proceed with execution.{Style.RESET_ALL}")
+    time.sleep(2)
+    os.system("clear")
+else:
+    print(f"{Fore.YELLOW}[{Fore.RED}!{Fore.YELLOW}]{Fore.RED} No internet connection !{Style.RESET_ALL}")
+    exit()
 
-lo = pyfiglet.figlet_format(text)
-colored_lo = colored(lo, color=selected_color)
+text = '''
+  ____________________________ 
+ /   _____/__    ___/______   \\
+ \_____  \  |    |   |     ___/
+ /        \ |    |   |    |    
+/_______  / |____|   |____|  Version : 2.1  
+        \/                     
+'''
 
-print(colored_lo)
+colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan']
+
+random_color = random.choice(colors)
+
+colored_text = colored(text, random_color)
+print(colored_text)
 
 art = '''
 +----------------------------+
@@ -58,87 +85,52 @@ colored_art = colored_art.replace('Ping', colored('Ping', 'yellow'))
 
 print(colored_art)
 
+print(f'''
+ {Fore.RED}<--------------------------------------------------------------------->
+ {Fore.RED}|{Fore.GREEN} GitHub{Fore.WHITE} : {Fore.BLUE}MohmmadALbaqer {Fore.WHITE}|{Fore.YELLOW}   https://www.github.com/MohmmadALbaqer/  {Fore.RED}|
+ {Fore.RED}|{Fore.GREEN} Instagram{Fore.WHITE} :{Fore.BLUE} r94xs {Fore.WHITE}      |{Fore.YELLOW}   https://www.instagram.comr94xs/         {Fore.RED}|
+ {Fore.RED}+---------------------------------------------------------------------+
+{Style.RESET_ALL}''')
 
+password = getpass.getpass(f"{Fore.GREEN}[+] Enter the access code: {Style.RESET_ALL}")
 
-insta_text = (
-    "+----------------------------------------------------+\n"
-    f"{Fore.RED}INSTAGRAM{Fore.YELLOW} ==> {Fore.CYAN}https://www.instagram.com/r94xs/{Style.RESET_ALL}   \n"
-    f"{Fore.RED}GitHub{Fore.YELLOW} =====> {Fore.CYAN}https://www.github.com/MohmmadALbaqer/{Style.RESET_ALL}   \n"
-    "+----------------------------------------------------+"
-)
-print(insta_text)
+if password == "r94xs":
+    init(autoreset=True)
+    print(Fore.GREEN + "GETTING BEST AVAILABLE SERVERS, UPLOADING & DOWNLOADING SPEED.....")
 
+    st = speedtest.Speedtest()
+    st.get_best_server()
 
-def print_loading():
-    loading_text = colored("[*]", "blue") + colored("Loading", "red") + colored("...", "yellow")
-    
-    for char in loading_text:
-        print(char, end='', flush=True)
-        time.sleep(0.1)
+    for _ in tqdm(range(10), colour="green", desc="Finding Optimal Server"):
+        sleep(0.05)
 
-print_loading()
+    st.download()
+    for _ in tqdm(range(10), colour="yellow", desc="Getting Download Speed"):
+        sleep(0.05)
 
-print("")
+    st.upload()
+    for _ in tqdm(range(10), colour="red", desc="Getting Upload Speed"):
+        sleep(0.05)
 
-required_libraries = ["speedtest-cli", "pyfiglet", "psutil"]
+    res_dict = st.results.dict()
 
-missing_libraries = []
+    dwnl = f"{res_dict['download'] / 10**6:.2f}"
+    upl = f"{res_dict['upload'] / 10**6:.2f}"
 
-for library in required_libraries:
-    try:
-        result = subprocess.check_output(["pip", "show", library], text=True)
-    except subprocess.CalledProcessError:
-        missing_libraries.append(library)
-
-if not missing_libraries:
-
-    password = getpass.getpass("Enter the access code: ")
-
-    if password == "r94xs":
-    
-        init(autoreset=True)
-        print(Fore.GREEN + "GETTING BEST AVAILABLE SERVERS, UPLOADING & DOWNLOADING SPEED.....")
-
-        st = speedtest.Speedtest()
-        st.get_best_server()
-
-        for _ in tqdm(range(10), colour="green", desc="Finding Optimal Server"):
-            sleep(0.05)
-
-        st.download()
-        for _ in tqdm(range(10), colour="yellow", desc="Getting Download Speed"):
-            sleep(0.05)
-
-        st.upload()
-        for _ in tqdm(range(10), colour="red", desc="Getting Upload Speed"):
-            sleep(0.05)
-
-        res_dict = st.results.dict()
-
-        dwnl = f"{res_dict['download'] / 10**6:.2f}"
-        upl = f"{res_dict['upload'] / 10**6:.2f}"
-
-        print("")
-        print(Fore.MAGENTA + "="*80)
-        print(Fore.GREEN + "INTERNET SPEED TEST RESULTS:".center(80))
-        print(Fore.MAGENTA + "="*80)
-        print(Fore.YELLOW + f"Download: {dwnl} Mbps ({float(dwnl) * 0.125:.2f} MB/s) | Upload: {upl} Mbps ({float(dwnl) * 0.125:.2f} MB/s) | Ping: {res_dict['ping']:.2f} ms".center(80))
-        print(Fore.MAGENTA + "-"*80)
-        print(Fore.CYAN + f"HOST: {res_dict['server']['host']} | SPONSOR: {res_dict['server']['sponsor']} | LATENCY: {res_dict['server']['latency']:.2f} ms".center(80))
-        print(Fore.MAGENTA + "-"*80)
-    else:
-        print("Access denied. The access code is incorrect.")
+    print("")
+    print(Fore.MAGENTA + "="*80)
+    print(Fore.GREEN + "INTERNET SPEED TEST RESULTS:".center(80))
+    print(Fore.MAGENTA + "="*80)
+    print(Fore.YELLOW + f"Download: {dwnl} Mbps ({float(dwnl) * 0.125:.2f} MB/s) | Upload: {upl} Mbps ({float(dwnl) * 0.125:.2f} MB/s) | Ping: {res_dict['ping']:.2f} ms".center(80))
+    print(Fore.MAGENTA + "-"*80)
+    print(Fore.CYAN + f"HOST: {res_dict['server']['host']} | SPONSOR: {res_dict['server']['sponsor']} | LATENCY: {res_dict['server']['latency']:.2f} ms".center(80))
+    print(Fore.MAGENTA + "-"*80)
 else:
-    for library in missing_libraries:
-        try:
-            subprocess.check_call(["pip", "install", library])
-            print(f"{library} installed successfully.")
-        except subprocess.CalledProcessError as e:
-            print(f"An error occurred during installation of {library}: {e}")
+    print("Access denied. The access code is incorrect.")
 
 text = "For more, write a command \"python3 help.py -h\" "
-
 start_index = text.find("python3 help.py -h")
+
 if start_index != -1:
     end_index = start_index + len("python3 help.py -h")
     colored_text = text[:start_index] + colored(text[start_index:end_index], "yellow") + text[end_index:]
