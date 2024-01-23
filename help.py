@@ -1,16 +1,15 @@
 import sys
+import os
 import time
 import speedtest
 import subprocess
-import getpass
 import pyfiglet
-import psutil
-import termcolor
 import socket
 from time import sleep
 from tqdm import tqdm
-from colorama import Fore, init
+from colorama import Fore, Style, init
 import argparse
+os.system("clear")
 
 def show_banner():
    import pyfiglet
@@ -21,7 +20,7 @@ colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
 
 selected_color = random.choice(colors)
 
-text = 'h e l p'
+text = 'help'
 
 lo = pyfiglet.figlet_format(text)
 colored_lo = colored(lo, color=selected_color)
@@ -90,12 +89,6 @@ if __name__ == '__main__':
     wait_with_spinner(wait_time)
     main()
 
-text = "more information About NetWork Your own Type command \"ip addr show\" "
+print(f"{Fore.GREEN}[+] Linux: {Fore.WHITE}more information About NetWork Your own Type command {Fore.RED}'{Fore.YELLOW}ip addr show{Fore.RED}' ")
 
-start_index = text.find("ip addr show")
-if start_index != -1:
-    end_index = start_index + len("ip addr show")
-    colored_text = text[:start_index] + colored(text[start_index:end_index], "yellow") + text[end_index:]
-    print(colored_text)
-else:
-    print(text)
+print(f"{Fore.GREEN}[+] Termux: {Fore.WHITE}more information About NetWork Your own Type command {Fore.RED}'{Fore.YELLOW}ifconfig{Fore.RED}' ")
