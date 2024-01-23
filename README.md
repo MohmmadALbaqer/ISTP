@@ -34,7 +34,7 @@ There are many advantages, discover them for yourself.
 ```
 
 
-### Installation (Kali Linux & Termux)
+### Installation (Linux & Termux)
 
 ```
 $ git clone https://github.com/MohmmadALbaqer/STP.git
@@ -43,6 +43,15 @@ $ pip3 install -r requirements.txt
 $ python3 install.py
 $ python3 stp.py
 # password (r94xs)
+```
+
+### work on systems
+
+```
+1- Linux
+2- Windows
+3- MacBook
+4- Android (Termux) or (pydroid3)
 ```
 
 ### updating tool
