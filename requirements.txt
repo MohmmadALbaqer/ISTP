@@ -1,7 +1,7 @@
 speedtest-cli
-pyfiglet
 psutil
 termcolor
+requests
 colorama
 tqdm
 Fore
