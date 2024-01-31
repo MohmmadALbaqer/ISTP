@@ -14,7 +14,7 @@ There are many advantages, discover them for yourself.
 
 
 
-### Speed Test Ping (Version : 2 . 1)
+### Speed Test Ping (Version : 2.1)
 ```
   ____________________________ 
  /   _____/__    ___/______   \
