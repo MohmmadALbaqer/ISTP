@@ -1,10 +1,5 @@
 speedtest-cli
-psutil
 termcolor
 requests
 colorama
 tqdm
-Fore
-Style
-getpass
-subprocess
