@@ -127,13 +127,3 @@ if password == "r94xs":
     print(Fore.MAGENTA + "-"*80)
 else:
     print("Access denied. The access code is incorrect.")
-
-text = "For more, write a command \"python3 help.py -h\" "
-start_index = text.find("python3 help.py -h")
-
-if start_index != -1:
-    end_index = start_index + len("python3 help.py -h")
-    colored_text = text[:start_index] + colored(text[start_index:end_index], "yellow") + text[end_index:]
-    print(colored_text)
-else:
-    print(text)
