@@ -3,7 +3,6 @@ import os
 import time
 import speedtest
 import requests
-import getpass
 import random
 from time import sleep
 from tqdm import tqdm
@@ -31,8 +30,6 @@ def spin():
     time.sleep(3)
 
 spin()
-
-print(1*"\n")
 
 def check_internet_connection():
     try:
@@ -86,10 +83,10 @@ colored_art = colored_art.replace('Ping', colored('Ping', 'yellow'))
 print(colored_art)
 
 print(f'''
- {Fore.RED}<--------------------------------------------------------------------->
- {Fore.RED}|{Fore.GREEN} GitHub{Fore.WHITE} : {Fore.BLUE}MohmmadALbaqer {Fore.WHITE}|{Fore.YELLOW}   https://www.github.com/MohmmadALbaqer/  {Fore.RED}|
- {Fore.RED}|{Fore.GREEN} Instagram{Fore.WHITE} :{Fore.BLUE} r94xs {Fore.WHITE}      |{Fore.YELLOW}   https://www.instagram.com/r94xs/        {Fore.RED}|
- {Fore.RED}+---------------------------------------------------------------------+
+ {Fore.RED}+------------------------------------------------------------------+
+ {Fore.RED}|{Fore.GREEN} GitHub{Fore.WHITE} : {Fore.BLUE}MohmmadALbaqer {Fore.WHITE}|{Fore.YELLOW} https://www.github.com/MohmmadALbaqer/ {Fore.RED}|
+ {Fore.RED}|{Fore.GREEN} Instagram{Fore.WHITE} :{Fore.BLUE} r94xs {Fore.WHITE}      |{Fore.YELLOW} https://www.instagram.comr94xs/        {Fore.RED}|
+ {Fore.RED}+------------------------------------------------------------------+
 {Style.RESET_ALL}''')
 
 password = getpass.getpass(f"{Fore.GREEN}[+] Enter the access code: {Style.RESET_ALL}")
