@@ -75,7 +75,7 @@ print(f'''
 
 init(autoreset=True)
 print(f"{Fore.WHITE}[{Fore.GREEN}*{Fore.WHITE}] {Fore.BLUE}Downloading to servers and information at internet speed{Style.RESET_ALL}")
-print(1*("\n")
+print(1*"\n")
 st = speedtest.Speedtest()
 st.get_best_server()
 
