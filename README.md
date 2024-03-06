@@ -1,3 +1,16 @@
+### What is a tool STP?
+```
+It is an abbreviation of the word (Speed Test Ping).
+The tool scans your Internet through the following processes:
+1- [Download] It checks the speed of your incoming Internet or reception in terms of speed in two sizes [Mbps][MB/s].
+2- [Upload] checks the Internet upload coming from your device or transmission on two scales [Mbps][MB/s].
+3- [Ping] means a network utility that indicates the signal sent over the network to another computer, and then sends its own signal again. This signal, which is measured in milliseconds (ms), lets you know how long it takes for a data packet to travel from your computer to a server on the Internet and vice versa and is measured in [ms].
+4- [Host] In short, it shows you the hosting address.
+5- [SPONSOR] displays the service provider provided by commercial and government companies.
+6- [LATENCY] It is a function that displays the network response time or duration for transferring data across the network, while networks with fast response times have a short transmission time.
+```
+
+
 ### Speed Test Ping (Version : 3)
 ```
   ____________________________ 
