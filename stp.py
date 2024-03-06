@@ -3,12 +3,24 @@ import os
 import time
 import speedtest
 import requests
-import random
 from time import sleep
 from tqdm import tqdm
 from colorama import Fore, Style, init
 from termcolor import colored
-os.system("clear")
+
+def clear_screen():
+    operating_system = os.name
+
+    try:
+        if operating_system == 'posix': 
+            os.system('clear')
+        elif operating_system == 'nt': 
+            os.system('cls')
+        else:
+            print("Unsupported operating system.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+clear_screen()
 
 def spin():
     delay = 0.25
@@ -27,7 +39,7 @@ def spin():
     done_message = colored("[+] Your Internet connection has been verified", 'yellow', attrs=['bold'])
     sys.stdout.write("\033[K") 
     print(done_message)
-    time.sleep(3)
+    time.sleep(1)
 
 spin()
 
@@ -39,88 +51,53 @@ def check_internet_connection():
         return False
 
 if check_internet_connection():
-    print(f"{Fore.GREEN}Internet connection is available. You can proceed with execution.{Style.RESET_ALL}")
-    time.sleep(2)
+    print(f"{Fore.GREEN}[*] Internet connection is available. You can proceed with execution.{Style.RESET_ALL}")
+    time.sleep(0.25)
     os.system("clear")
 else:
     print(f"{Fore.YELLOW}[{Fore.RED}!{Fore.YELLOW}]{Fore.RED} No internet connection !{Style.RESET_ALL}")
     exit()
 
-text = '''
+print(f"""{Fore.BLUE}
   ____________________________ 
  /   _____/__    ___/______   \\
  \_____  \  |    |   |     ___/
  /        \ |    |   |    |    
-/_______  / |____|   |____|  Version : 2.1  
-        \/                     
-'''
-
-colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan']
-
-random_color = random.choice(colors)
-
-colored_text = colored(text, random_color)
-print(colored_text)
-
-art = '''
-+----------------------------+
-|  .               .         |
-| .´  ·  .     .  ·  `.      |
-| :  :  :  (¯)  :  :  :      |
-| `.  ·  ` /¯\ ´  ·  .´      |
-|   `     /¯¯¯\     ´        |
-+----------------------------+
-|     Speed Test Ping        |
-+----------------------------+
-'''
-
-colored_art = colored(art, 'white')
-
-colored_art = colored_art.replace('Speed', colored('Speed', 'green'))
-colored_art = colored_art.replace('Test', colored('Test', 'red'))
-colored_art = colored_art.replace('Ping', colored('Ping', 'yellow'))
-
-print(colored_art)
-
+/_______  / |____|   |____|  {Fore.GREEN}Version : 3{Fore.BLUE}
+        \/ {Style.RESET_ALL}""")
 print(f'''
- {Fore.RED}+------------------------------------------------------------------+
- {Fore.RED}|{Fore.GREEN} GitHub{Fore.WHITE} : {Fore.BLUE}MohmmadALbaqer {Fore.WHITE}|{Fore.YELLOW} https://www.github.com/MohmmadALbaqer/ {Fore.RED}|
- {Fore.RED}|{Fore.GREEN} Instagram{Fore.WHITE} :{Fore.BLUE} r94xs {Fore.WHITE}      |{Fore.YELLOW} https://www.instagram.comr94xs/        {Fore.RED}|
- {Fore.RED}+------------------------------------------------------------------+
-{Style.RESET_ALL}''')
+{Fore.RED}+------------------------------------------------------------------+
+{Fore.RED}|{Fore.GREEN} GitHub{Fore.WHITE} : {Fore.BLUE}MohmmadALbaqer {Fore.WHITE}|{Fore.YELLOW} https://www.github.com/MohmmadALbaqer/ {Fore.RED}|
+{Fore.RED}|{Fore.GREEN} Instagram{Fore.WHITE} :{Fore.BLUE} r94xs {Fore.WHITE}      |{Fore.YELLOW} https://www.instagram.comr94xs/        {Fore.RED}|
+{Fore.RED}+------------------------------------------------------------------+{Style.RESET_ALL}''')
 
-password = getpass.getpass(f"{Fore.GREEN}[+] Enter the access code: {Style.RESET_ALL}")
+init(autoreset=True)
+print(f"{Fore.GREEN}[*] GETTING BEST AVAILABLE SERVERS, UPLOADING & DOWNLOADING SPEED.....{Style.RESET_ALL}")
 
-if password == "r94xs":
-    init(autoreset=True)
-    print(Fore.GREEN + "GETTING BEST AVAILABLE SERVERS, UPLOADING & DOWNLOADING SPEED.....")
+st = speedtest.Speedtest()
+st.get_best_server()
 
-    st = speedtest.Speedtest()
-    st.get_best_server()
+for _ in tqdm(range(10), colour="green", desc="Finding Optimal Server"):
+    sleep(0.05)
 
-    for _ in tqdm(range(10), colour="green", desc="Finding Optimal Server"):
-        sleep(0.05)
+st.download()
+for _ in tqdm(range(10), colour="yellow", desc="Getting Download Speed"):
+    sleep(0.05)
 
-    st.download()
-    for _ in tqdm(range(10), colour="yellow", desc="Getting Download Speed"):
-        sleep(0.05)
+st.upload()
+for _ in tqdm(range(10), colour="red", desc="Getting Upload Speed"):
+    sleep(0.05)
 
-    st.upload()
-    for _ in tqdm(range(10), colour="red", desc="Getting Upload Speed"):
-        sleep(0.05)
+res_dict = st.results.dict()
 
-    res_dict = st.results.dict()
+dwnl = f"{res_dict['download'] / 10**6:.2f}"
+upl = f"{res_dict['upload'] / 10**6:.2f}"
 
-    dwnl = f"{res_dict['download'] / 10**6:.2f}"
-    upl = f"{res_dict['upload'] / 10**6:.2f}"
-
-    print("")
-    print(Fore.MAGENTA + "="*80)
-    print(Fore.GREEN + "INTERNET SPEED TEST RESULTS:".center(80))
-    print(Fore.MAGENTA + "="*80)
-    print(Fore.YELLOW + f"Download: {dwnl} Mbps ({float(dwnl) * 0.125:.2f} MB/s) | Upload: {upl} Mbps ({float(dwnl) * 0.125:.2f} MB/s) | Ping: {res_dict['ping']:.2f} ms".center(80))
-    print(Fore.MAGENTA + "-"*80)
-    print(Fore.CYAN + f"HOST: {res_dict['server']['host']} | SPONSOR: {res_dict['server']['sponsor']} | LATENCY: {res_dict['server']['latency']:.2f} ms".center(80))
-    print(Fore.MAGENTA + "-"*80)
-else:
-    print("Access denied. The access code is incorrect.")
+print("")
+print(f"{Fore.WHITE}[{Fore.GREEN}*{Fore.WHITE}] {Fore.BLUE}Internet test information{Style.RESET_ALL}")
+print(f"{Fore.WHITE}[{Fore.GREEN}*{Fore.WHITE}] {Fore.YELLOW}Download:{Fore.BLUE} {dwnl} Mbps ({float(dwnl) * 0.125:.2f} MB/s) ")
+print(f"{Fore.WHITE}[{Fore.GREEN}*{Fore.WHITE}] {Fore.YELLOW}Upload:{Fore.BLUE} {upl} Mbps ({float(dwnl) * 0.125:.2f} MB/s)")  
+print(f"{Fore.WHITE}[{Fore.GREEN}*{Fore.WHITE}] {Fore.YELLOW}Ping:{Fore.BLUE} {res_dict['ping']:.2f} ms")
+print(f"{Fore.WHITE}[{Fore.GREEN}*{Fore.WHITE}] {Fore.YELLOW}HOST:{Fore.BLUE} {res_dict['server']['host']}") 
+print(f"{Fore.WHITE}[{Fore.GREEN}*{Fore.WHITE}] {Fore.YELLOW}SPONSOR:{Fore.BLUE} {res_dict['server']['sponsor']}")  
+print(f"{Fore.WHITE}[{Fore.GREEN}*{Fore.WHITE}] {Fore.YELLOW}LATENCY:{Fore.BLUE} {res_dict['server']['latency']:.2f} ms")
