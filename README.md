@@ -8,6 +8,13 @@
         \/                     
 ```
 
+### What's new version 3?
+```
+* Improve the interface and make it scan automatically without your intervention.
+* Check your connection to the Internet.
+* Displaying results in the form of fields, making them easier and better understood than previous versions
+* The tool has become faster than it was before.
+```
 
 ### Installation
 
