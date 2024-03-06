@@ -9,7 +9,7 @@
 ```
 
 
-### Installation (Linux & Termux)
+### Installation
 
 ```
 $ git clone https://github.com/MohmmadALbaqer/STP.git
