@@ -1,4 +1,4 @@
-![Logo](Logo.png)
+![Logo](logo.png)
 
 ### What is a tool STP?
 ```
