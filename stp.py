@@ -9,6 +9,15 @@ from colorama import Fore, Style, Back, init
 from termcolor import colored
 from prettytable import PrettyTable
 
+R = '\033[31m'  # red
+G = '\033[32m'  # green
+C = '\033[36m'  # cyan
+W = '\033[0m'   # white
+Y = '\033[33m'  # yellow
+B = '\033[34m'  # blue
+M = '\033[35m'  # magenta
+D = '\033[30m'  # dark or black
+
 def clear_screen():
     operating_system = os.name
 
@@ -60,17 +69,19 @@ else:
     print(f"{Fore.YELLOW}[{Fore.RED}!{Fore.YELLOW}]{Fore.RED} No internet connection !{Style.RESET_ALL}")
     exit()
 
-print(f"""{Fore.BLUE}
-  ____________________________ 
- /   _____/__    ___/______   \\
- \_____  \  |    |   |     ___/
- /        \ |    |   |    |    
-/_______  / |____|   |____|  {Fore.GREEN}Version : 3{Fore.BLUE}
-        \/{Style.RESET_ALL}""")
+print(rf"""
+      {G}\ | /      
+     {B}-- {R}O{B} --{W}
+       {G}/|\        {B}____________________________{W}                                      
+      {G}/\|/\      {B}/   _____/__    ___/______   \{W}
+     {G}/  |  \     {B}\_____  \  |    |   |     ___/{W} 
+    {G}/\/\|/\/\    {B}/        \ |    |   |    |{W}  
+   {G}/    |    \  {B}/_______  / |____|   |____|{Y} Version : 4{W}
+  {B}-     -     -{W}         {B}\/{W}""")
 print(f'''
 {Fore.RED}+------------------------------------------------------------------+
 {Fore.RED}|{Fore.GREEN} GitHub{Fore.WHITE} : {Fore.BLUE}MohmmadALbaqer {Fore.WHITE}|{Fore.YELLOW} https://www.github.com/MohmmadALbaqer/ {Fore.RED}|
-{Fore.RED}|{Fore.GREEN} Instagram{Fore.WHITE} :{Fore.BLUE} r94xs {Fore.WHITE}      |{Fore.YELLOW} https://www.instagram.comr94xs/        {Fore.RED}|
+{Fore.RED}|{Fore.GREEN} Instagram{Fore.WHITE} :{Fore.BLUE} r94xs {Fore.WHITE}      |{Fore.YELLOW} https://www.instagram.com/r94xs/        {Fore.RED}|
 {Fore.RED}+------------------------------------------------------------------+{Style.RESET_ALL}''')
 
 init(autoreset=True)
