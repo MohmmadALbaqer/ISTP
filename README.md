@@ -26,7 +26,7 @@ The tool scans your Internet through the following processes:
   -     -     -         \/                    
 ```
 
-### What's new version 3?
+### What's new version 4?
 ```
 * Improve the interface and make it scan automatically without your intervention.
 * Check your connection to the Internet.
