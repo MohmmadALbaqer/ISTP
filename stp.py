@@ -17,6 +17,8 @@ Y = '\033[33m'  # yellow
 B = '\033[34m'  # blue
 M = '\033[35m'  # magenta
 D = '\033[30m'  # dark or black
+INFO = f"{Fore.BLUE}{Style.BRIGHT}[{Fore.GREEN}{Style.BRIGHT}INFO{Fore.BLUE}{Style.BRIGHT}]{Fore.MAGENTA}"
+
 
 def clear_screen():
     operating_system = os.name
@@ -64,10 +66,22 @@ def check_internet_connection():
 if check_internet_connection():
     print(f"{Fore.GREEN}[*] Internet connection is available. You can proceed with execution.{Style.RESET_ALL}")
     time.sleep(0.25)
-    os.system("clear")
 else:
     print(f"{Fore.YELLOW}[{Fore.RED}!{Fore.YELLOW}]{Fore.RED} No internet connection !{Style.RESET_ALL}")
     exit()
+
+def clear_screen():
+    operating_system = os.name
+    try:
+        if operating_system == 'posix': 
+            os.system('clear')
+        elif operating_system == 'nt': 
+            os.system('cls')
+        else:
+            print(f"[!] System unknown!{Style.RESET_ALL}")
+    except Exception as e:
+        print(f"[ERROR]{Style.RESET_ALL}: {e}")
+clear_screen()
 
 print(rf"""
       {G}\ | /      
@@ -85,20 +99,19 @@ print(f'''
 {Fore.RED}+------------------------------------------------------------------+{Style.RESET_ALL}''')
 
 init(autoreset=True)
-print(f"{Fore.WHITE}[{Fore.GREEN}*{Fore.WHITE}] {Fore.BLUE}Downloading to servers and information at internet speed{Style.RESET_ALL}")
-print(1*"\n")
+print(f"{Fore.BLUE}[{Fore.GREEN}*{Fore.BLUE}] {Fore.YELLOW}Downloading to servers and information at internet speed.{Style.RESET_ALL}")
 st = speedtest.Speedtest()
 st.get_best_server()
 
-for _ in tqdm(range(10), colour="green", desc="Finding Optimal Server"):
+for _ in tqdm(range(10), colour="green", desc=f"{INFO} Finding  Optimal  Server"):
     sleep(0.05)
 
 st.download()
-for _ in tqdm(range(10), colour="yellow", desc="Getting Download Speed"):
+for _ in tqdm(range(10), colour="yellow", desc=f"{INFO} Getting {Fore.WHITE}{Style.BRIGHT}[{Fore.YELLOW}{Style.BRIGHT}Download{Fore.WHITE}{Style.BRIGHT}] {Fore.MAGENTA}{Style.BRIGHT}Speed"):
     sleep(0.05)
 
 st.upload()
-for _ in tqdm(range(10), colour="red", desc="Getting Upload Speed"):
+for _ in tqdm(range(10), colour="red", desc=f"{INFO} Getting  {Fore.WHITE}{Style.BRIGHT}[{Fore.YELLOW}{Style.BRIGHT}Upload{Fore.WHITE}{Style.BRIGHT}] {Fore.MAGENTA}{Style.BRIGHT} Speed"):
     sleep(0.05)
 
 res_dict = st.results.dict()
