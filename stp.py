@@ -9,14 +9,16 @@ from colorama import Fore, Style, Back, init
 from termcolor import colored
 from prettytable import PrettyTable
 
-R = '\033[31m'  # red
-G = '\033[32m'  # green
-C = '\033[36m'  # cyan
-W = '\033[0m'   # white
-Y = '\033[33m'  # yellow
-B = '\033[34m'  # blue
-M = '\033[35m'  # magenta
-D = '\033[30m'  # dark or black
+init()
+R = f"{Fore.RED}{Style.BRIGHT}"
+G = f"{Fore.GREEN}{Style.BRIGHT}"
+B = f"{Fore.BLUE}{Style.BRIGHT}"
+Y = f"{Fore.YELLOW}{Style.BRIGHT}"
+C = f"{Fore.CYAN}{Style.BRIGHT}"
+M = f"{Fore.MAGENTA}{Style.BRIGHT}"
+W = f"{Fore.WHITE}{Style.BRIGHT}"
+D = f"{Fore.BLACK}{Style.BRIGHT}"
+ERROR = f"{Y}[{R}!{Y}]{R}"
 INFO = f"{Fore.BLUE}{Style.BRIGHT}[{Fore.GREEN}{Style.BRIGHT}INFO{Fore.BLUE}{Style.BRIGHT}]{Fore.MAGENTA}"
 
 
@@ -41,7 +43,7 @@ def spin():
 
     for _ in range(1):
         for i in spinner:
-            message = f"[*] {Fore.BLUE}Checking your internet connection...[{i}]{Style.RESET_ALL}"
+            message = f"[*] {B}Checking your internet connection...[{i}]{W}"
             colored_message = colored(message, 'blue', attrs=['bold'])
             sys.stdout.write(f"\r{colored_message}   ")
             sys.stdout.flush()
@@ -64,10 +66,10 @@ def check_internet_connection():
         return False
 
 if check_internet_connection():
-    print(f"{Fore.GREEN}[*] Internet connection is available. You can proceed with execution.{Style.RESET_ALL}")
+    print(f"{G}[*] Internet connection is available. You can proceed with execution.{W}")
     time.sleep(0.25)
 else:
-    print(f"{Fore.YELLOW}[{Fore.RED}!{Fore.YELLOW}]{Fore.RED} No internet connection !{Style.RESET_ALL}")
+    print(f"{ERROR} No internet connection !{W}")
     exit()
 
 def clear_screen():
@@ -80,7 +82,7 @@ def clear_screen():
         else:
             print(f"[!] System unknown!{Style.RESET_ALL}")
     except Exception as e:
-        print(f"[ERROR]{Style.RESET_ALL}: {e}")
+        print(f"[ERROR]{W}: {e}")
 clear_screen()
 
 print(rf"""
@@ -91,15 +93,15 @@ print(rf"""
      {G}/  |  \     {B}\_____  \  |    |   |     ___/{W} 
     {G}/\/\|/\/\    {B}/        \ |    |   |    |{W}  
    {G}/    |    \  {B}/_______  / |____|   |____|{Y} Version : 4{W}
-  {B}-     -     -{W}         {B}\/{W}""")
-print(f'''
-{Fore.RED}+------------------------------------------------------------------+
-{Fore.RED}|{Fore.GREEN} GitHub{Fore.WHITE} : {Fore.BLUE}MohmmadALbaqer {Fore.WHITE}|{Fore.YELLOW} https://www.github.com/MohmmadALbaqer/ {Fore.RED}|
-{Fore.RED}|{Fore.GREEN} Instagram{Fore.WHITE} :{Fore.BLUE} r94xs {Fore.WHITE}      |{Fore.YELLOW} https://www.instagram.com/r94xs/       {Fore.RED}|
-{Fore.RED}+------------------------------------------------------------------+{Style.RESET_ALL}''')
+  {B}-     -     -{W}         {B}\/{W}
+
+{R}+------------------------------------------------------------------+
+{R}|{G} GitHub{W} : {B}MohmmadALbaqer {W}|{Y} https://www.github.com/MohmmadALbaqer/ {R}|
+{R}|{G} Instagram{W} :{B} r94xs {W}      |{Y} https://www.instagram.com/r94xs/       {R}|
+{R}+------------------------------------------------------------------+{W}""")
 
 init(autoreset=True)
-print(f"{Fore.BLUE}[{Fore.GREEN}*{Fore.BLUE}] {Fore.YELLOW}Downloading to servers and information at internet speed.{Style.RESET_ALL}")
+print(f"{Fore.BLUE}[{G}*{B}] {Y}Downloading to servers and information at internet speed.{W}")
 st = speedtest.Speedtest()
 st.get_best_server()
 
@@ -107,11 +109,11 @@ for _ in tqdm(range(10), colour="green", desc=f"{INFO} Finding  Optimal  Server"
     sleep(0.05)
 
 st.download()
-for _ in tqdm(range(10), colour="yellow", desc=f"{INFO} Getting {Fore.WHITE}{Style.BRIGHT}[{Fore.YELLOW}{Style.BRIGHT}Download{Fore.WHITE}{Style.BRIGHT}] {Fore.MAGENTA}{Style.BRIGHT}Speed"):
+for _ in tqdm(range(10), colour="yellow", desc=f"{INFO} Getting {W}[{Y}Download{W}] {M}Speed"):
     sleep(0.05)
 
 st.upload()
-for _ in tqdm(range(10), colour="red", desc=f"{INFO} Getting  {Fore.WHITE}{Style.BRIGHT}[{Fore.YELLOW}{Style.BRIGHT}Upload{Fore.WHITE}{Style.BRIGHT}] {Fore.MAGENTA}{Style.BRIGHT} Speed"):
+for _ in tqdm(range(10), colour="red", desc=f"{INFO} Getting  {W}[{Y}Upload{W}] {M} Speed"):
     sleep(0.05)
 
 res_dict = st.results.dict()
@@ -121,14 +123,14 @@ upl = f"{res_dict['upload'] / 10**6:.2f}"
 
 table = PrettyTable()
 
-table.field_names = [f"{Fore.MAGENTA}ID{Style.RESET_ALL}", f"{Fore.BLUE}INFORMATION{Style.RESET_ALL}", f"{Fore.RED}Information results{Style.RESET_ALL}"]
+table.field_names = [f"{M}ID{W}", f"{B}INFORMATION{W}", f"{R}Information results{W}"]
 
-table.add_row([f"{Fore.GREEN}1{Style.RESET_ALL}", f"{Fore.YELLOW}Download{Style.RESET_ALL}", f"{dwnl} Mbps ({float(dwnl) * 0.125:.2f} MB/s)"])
-table.add_row([f"{Fore.GREEN}2{Style.RESET_ALL}", f"{Fore.YELLOW}Upload{Style.RESET_ALL}", f"{upl} Mbps ({float(upl) * 0.125:.2f} MB/s)"])
-table.add_row([f"{Fore.GREEN}3{Style.RESET_ALL}", f"{Fore.YELLOW}Ping{Style.RESET_ALL}", f"{res_dict['ping']:.2f} ms"])
-table.add_row([f"{Fore.GREEN}4{Style.RESET_ALL}", f"{Fore.YELLOW}HOST{Style.RESET_ALL}", res_dict['server']['host']])
-table.add_row([f"{Fore.GREEN}5{Style.RESET_ALL}", f"{Fore.YELLOW}SPONSOR{Style.RESET_ALL}", res_dict['server']['sponsor']])
-table.add_row([f"{Fore.GREEN}6{Style.RESET_ALL}", f"{Fore.YELLOW}LATENCY{Style.RESET_ALL}", f"{res_dict['server']['latency']:.2f} ms"])
+table.add_row([f"{G}1{W}", f"{Y}Download{W}", f"{B}{dwnl} {M}Mbps{W} ({B}{float(dwnl) * 0.125:.2f} {G}MB/s{W})"])
+table.add_row([f"{G}2{W}", f"{Y}Upload{W}", f"{B}{upl} {M}Mbps{W} ({B}{float(upl) * 0.125:.2f} {G}MB/s{W})"])
+table.add_row([f"{G}3{W}", f"{Y}Ping{W}", f"{B}{res_dict['ping']:.2f} {G}ms{W}"])
+table.add_row([f"{G}4{W}", f"{Y}HOST{W}", res_dict['server']['host']])
+table.add_row([f"{G}5{W}", f"{Y}SPONSOR{W}", res_dict['server']['sponsor']])
+table.add_row([f"{G}6{W}", f"{Y}LATENCY{W}", f"{B}{res_dict['server']['latency']:.2f} {G}ms{W}"])
 
 for field in table.field_names:
     table.align[field] = "l"
