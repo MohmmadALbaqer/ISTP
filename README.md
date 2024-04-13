@@ -1,6 +1,6 @@
 ![Logo](logo.png)
 
-### What is a tool STP?
+### What is a tool ISTP?
 ```
 It is an abbreviation of the word (Speed Test Ping).
 The tool scans your Internet through the following processes:
@@ -20,35 +20,34 @@ The tool scans your Internet through the following processes:
 ```
 
 
-### Speed Test Ping (Version : 4)
+### Internet Speed Test Ping (Version : 5)
+```
+ ___  ____________________________ 
+|   |/   _____/__    ___/______   \
+|   |\_____  \  |    |   |     ___/
+|   |/        \ |    |   |    |    
+|___|_______  / |____|   |____|    
+            \/                                       
 ```
 
-      \ | /      
-     -- O --
-       /|\        ____________________________                                      
-      /\|/\      /   _____/__    ___/______   \
-     /  |  \     \_____  \  |    |   |     ___/ 
-    /\/\|/\/\    /        \ |    |   |    |  
-   /    |    \  /_______  / |____|   |____|
-  -     -     -         \/                    
-```
-
-### What's new version 4?
+### What's new version 5?
 ```
 * Improve the interface and make it scan automatically without your intervention.
 * Check your connection to the Internet.
 * Displaying results in the form of fields, making them easier and better understood than previous versions
 * The tool has become faster than it was before.
+* 7 features have been added, including completing an Internet scan in your country, including the following additions:
+(ISP) , (Country) , (URL) ,  (Hosted By) ,  (Packet Loss) ,  (Server ID) ,  (ISP Rating).
+* Add a clock and calendar to know when and at what time you checked your Internet.
 ```
 
 ### Installation
 
 ```
-$ git clone https://github.com/MohmmadALbaqer/STP.git
+$ git clone https://github.com/MohmmadALbaqer/ISTP.git
 $ cd STP
 $ pip3 install -r requirements.txt
-$ python3 install.py
-$ python3 stp.py
+$ python3 istp.py
 ```
 
 ### work on systems
