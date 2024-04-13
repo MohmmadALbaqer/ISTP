@@ -1,4 +1,4 @@
-![Logo](logo.png)
+![Logo](ISTP.png)
 
 ### What is a tool ISTP?
 ```
