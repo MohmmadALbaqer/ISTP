@@ -1,6 +1,7 @@
 import sys
 import os
 import time
+import datetime
 import speedtest
 import requests
 from time import sleep
@@ -10,6 +11,7 @@ from termcolor import colored
 from prettytable import PrettyTable
 
 init()
+
 R = f"{Fore.RED}{Style.BRIGHT}"
 G = f"{Fore.GREEN}{Style.BRIGHT}"
 B = f"{Fore.BLUE}{Style.BRIGHT}"
@@ -21,20 +23,17 @@ D = f"{Fore.BLACK}{Style.BRIGHT}"
 ERROR = f"{Y}[{R}!{Y}]{R}"
 INFO = f"{Fore.BLUE}{Style.BRIGHT}[{Fore.GREEN}{Style.BRIGHT}INFO{Fore.BLUE}{Style.BRIGHT}]{Fore.MAGENTA}"
 
-
 def clear_screen():
     operating_system = os.name
-
     try:
         if operating_system == 'posix': 
             os.system('clear')
         elif operating_system == 'nt': 
             os.system('cls')
         else:
-            print("Unsupported operating system.")
+            print(f"[!] System unknown!{Style.RESET_ALL}")
     except Exception as e:
-        print(f"An error occurred: {e}")
-
+        print(f"[ERROR]{W}: {e}")
 clear_screen()
 
 def spin():
@@ -88,13 +87,13 @@ clear_screen()
 print(rf"""
       {G}\ | /      
      {B}-- {R}O{B} --{W}
-       {G}/|\        {B}____________________________{W}                                      
-      {G}/\|/\      {B}/   _____/__    ___/______   \{W}
-     {G}/  |  \     {B}\_____  \  |    |   |     ___/{W} 
-    {G}/\/\|/\/\    {B}/        \ |    |   |    |{W}  
-   {G}/    |    \  {B}/_______  / |____|   |____|{Y} Version : 4{W}
-  {B}-     -     -{W}         {B}\/{W}
-
+       {G}/|\        {B}___  ____________________________{W}                                      
+      {G}/\|/\      {B}|   |/   _____/__    ___/______   \{W}
+     {G}/  |  \     {B}|   |\_____  \  |    |   |     ___/{W} 
+    {G}/\/\|/\/\    {B}|   |/        \ |    |   |    |{W}  
+   {G}/    |    \  {B} |___|_______  / |____|   |____|{Y} Version : 5{W}
+  {B}-     -     -{W}              {B}\/{W}
+{Back.RED}{W} [Internet Speed Test Ping ] {Style.RESET_ALL}
 {R}+------------------------------------------------------------------+
 {R}|{G} GitHub{W} : {B}MohmmadALbaqer {W}|{Y} https://www.github.com/MohmmadALbaqer/ {R}|
 {R}|{G} Instagram{W} :{B} r94xs {W}      |{Y} https://www.instagram.com/r94xs/       {R}|
@@ -131,8 +130,21 @@ table.add_row([f"{G}3{W}", f"{Y}Ping{W}", f"{B}{res_dict['ping']:.2f} {G}ms{W}"]
 table.add_row([f"{G}4{W}", f"{Y}HOST{W}", res_dict['server']['host']])
 table.add_row([f"{G}5{W}", f"{Y}SPONSOR{W}", res_dict['server']['sponsor']])
 table.add_row([f"{G}6{W}", f"{Y}LATENCY{W}", f"{B}{res_dict['server']['latency']:.2f} {G}ms{W}"])
+table.add_row([f"{G}7{W}", f"{Y}ISP{W}", res_dict['client']['isp']])
+table.add_row([f"{G}8{W}", f"{Y}Country{W}", res_dict['client']['country']])
+table.add_row([f"{G}9{W}", f"{Y}URL{W}", st.results.share()])
+table.add_row([f"{G}10{W}", f"{Y}Hosted By{W}", res_dict['server']['host']])
+packet_loss = res_dict.get('packetLoss', 'N/A')
+table.add_row([f"{G}11{W}", f"{Y}Packet Loss{W}", f"{B}{packet_loss}%{W}"])
+table.add_row([f"{G}12{W}", f"{Y}Server ID{W}", res_dict['server']['id']])
+table.add_row([f"{G}13{W}", f"{Y}ISP Rating{W}", res_dict['client']['isprating']])
 
 for field in table.field_names:
     table.align[field] = "l"
 
 print(table)
+
+now = datetime.datetime.now()
+formatted_time = now.strftime("%I:%M %p")
+formatted_day = now.strftime("%A")
+print(f"{B}[{G}Today{B}] {W}({Y}{formatted_day}{W} {M}{now:%B %D %Y}{W}) {B}[{G}Time{B}] {Y}[{R}{formatted_time}{Y}]{W}")
