@@ -58,18 +58,3 @@ $ python3 istp.py
 3- MacBook
 4- Android (Termux) or (pydroid3)
 ```
-
-### updating tool
-
-```
-$ python3 update.py
-```
-
-
-
-
-### OR 
-
-```
-$ git pull origin master
-```
