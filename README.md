@@ -54,7 +54,7 @@ $ python3 istp.py
 
 ### 
 
-[Click here to watch the video](file:///path/to/your/video.mp4)
+[Click here to watch the video](file://termux.mp4)
 
 Rest of the text...
 
