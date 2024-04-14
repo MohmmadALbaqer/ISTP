@@ -52,13 +52,12 @@ $ python3 istp.py
 ### ScreenShot
 ![Logo](Screenshot.png)
 
-### 
+### Watch the video
 
-[Click here to watch the video](termux.mp4)
-
-Rest of the text...
-
-
+<video controls width="500">
+  <source src="termux.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ### work on systems
 
