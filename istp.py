@@ -93,7 +93,7 @@ print(rf"""
     {G}/\/\|/\/\    {B}|   |/        \ |    |   |    |{W}
    {G}/    |    \  {B} |___|_______  / |____|   |____|{Y} Version : 5{W}
   {B}-     -     -{W}              {B}\/{W}
-{Back.RED}{W} [Internet Speed Test Ping ] {Style.RESET_ALL}
+{Back.RED}{W} [Internet Speed Test Ping] {Style.RESET_ALL}
 {R}+------------------------------------------------------------------+
 {R}|{G} GitHub{W} : {B}MohmmadALbaqer {W}|{Y} https://www.github.com/MohmmadALbaqer/ {R}|
 {R}|{G} Instagram{W} :{B} r94xs {W}      |{Y} https://www.instagram.com/r94xs/       {R}|
