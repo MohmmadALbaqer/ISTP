@@ -53,14 +53,9 @@ $ python3 istp.py
 ![Logo](Screenshot.png)
 
 ### Watch the video
-Some text...
+![Watch the video](termux.mp4)
 
-<video controls width="500">
-  <source src="termux.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
 
-Rest of the text...
 
 ### work on systems
 
