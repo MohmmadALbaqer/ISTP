@@ -52,11 +52,6 @@ $ python3 istp.py
 ### ScreenShot
 ![Logo](Screenshot.png)
 
-### Watch the video
-![Watch the video](termux.mp4)
-
-
-
 ### work on systems
 
 ```
