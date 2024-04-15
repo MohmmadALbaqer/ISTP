@@ -50,7 +50,7 @@ $ pip3 install -r requirements.txt
 $ python3 istp.py
 ```
 ### ScreenShot
-![Logo](ScreenshotISTP.png.png)
+![Logo](ScreenShot_ISTP.png)
 
 ### work on systems
 
