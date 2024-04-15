@@ -99,8 +99,9 @@ print(rf"""
 {R}|{G} Instagram{W} :{B} r94xs {W}      |{Y} https://www.instagram.com/r94xs/       {R}|
 {R}+------------------------------------------------------------------+{W}""")
 
+print(f"{B}[{G}+{B}] {Fore.WHITE}If you are waiting for a long time in downloading click to exit {Y}[Ctrl {W}+{Y} C]{W}")
 init(autoreset=True)
-print(f"{Fore.BLUE}[{G}*{B}] {Y}Downloading to servers and information at internet speed.{W}")
+print(f"{B}[{G}*{B}] {Y}Downloading to servers and information at internet speed.{W}")
 st = speedtest.Speedtest()
 st.get_best_server()
 
