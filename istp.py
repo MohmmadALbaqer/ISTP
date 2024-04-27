@@ -12,16 +12,15 @@ from prettytable import PrettyTable
 
 init()
 
-R = f"{Fore.RED}{Style.BRIGHT}"
-G = f"{Fore.GREEN}{Style.BRIGHT}"
-B = f"{Fore.BLUE}{Style.BRIGHT}"
-Y = f"{Fore.YELLOW}{Style.BRIGHT}"
-C = f"{Fore.CYAN}{Style.BRIGHT}"
-M = f"{Fore.MAGENTA}{Style.BRIGHT}"
-W = f"{Fore.WHITE}{Style.BRIGHT}"
-D = f"{Fore.BLACK}{Style.BRIGHT}"
-ERROR = f"{Y}[{R}!{Y}]{R}"
-INFO = f"{Fore.BLUE}{Style.BRIGHT}[{Fore.GREEN}{Style.BRIGHT}INFO{Fore.BLUE}{Style.BRIGHT}]{Fore.MAGENTA}"
+R = "\033[91;1m"  # Red
+G = "\033[92;1m"  # Green
+B = "\033[94;1m"  # Blue
+Y = "\033[93;1m"  # Yellow
+C = "\033[96;1m"  # Cyan
+M = "\033[95;1m"  # Magenta
+W = "\033[97;1m"  # White
+D = "\033[90;1m"  # Grey
+INFO = f"{B}[{G}INFO{B}]{M}"
 
 def clear_screen():
     operating_system = os.name
@@ -130,15 +129,14 @@ table.add_row([f"{G}2{W}", f"{Y}Upload{W}", f"{B}{upl} {M}Mbps{W} ({B}{float(upl
 table.add_row([f"{G}3{W}", f"{Y}Ping{W}", f"{B}{res_dict['ping']:.2f} {G}ms{W}"])
 table.add_row([f"{G}4{W}", f"{Y}HOST{W}", res_dict['server']['host']])
 table.add_row([f"{G}5{W}", f"{Y}SPONSOR{W}", res_dict['server']['sponsor']])
-table.add_row([f"{G}6{W}", f"{Y}LATENCY{W}", f"{B}{res_dict['server']['latency']:.2f} {G}ms{W}"])
-table.add_row([f"{G}7{W}", f"{Y}ISP{W}", res_dict['client']['isp']])
-table.add_row([f"{G}8{W}", f"{Y}Country{W}", res_dict['client']['country']])
-table.add_row([f"{G}9{W}", f"{Y}URL{W}", st.results.share()])
-table.add_row([f"{G}10{W}", f"{Y}Hosted By{W}", res_dict['server']['host']])
+table.add_row([f"{G}6{W}", f"{Y}ISP{W}", res_dict['client']['isp']])
+table.add_row([f"{G}7{W}", f"{Y}Country{W}", res_dict['client']['country']])
+table.add_row([f"{G}8{W}", f"{Y}URL{W}", st.results.share()])
+table.add_row([f"{G}9{W}", f"{Y}Hosted By{W}", res_dict['server']['host']])
 packet_loss = res_dict.get('packetLoss', 'N/A')
-table.add_row([f"{G}11{W}", f"{Y}Packet Loss{W}", f"{B}{packet_loss}%{W}"])
-table.add_row([f"{G}12{W}", f"{Y}Server ID{W}", res_dict['server']['id']])
-table.add_row([f"{G}13{W}", f"{Y}ISP Rating{W}", res_dict['client']['isprating']])
+table.add_row([f"{G}10{W}", f"{Y}Packet Loss{W}", f"{B}{packet_loss}%{W}"])
+table.add_row([f"{G}11{W}", f"{Y}Server ID{W}", res_dict['server']['id']])
+table.add_row([f"{G}12{W}", f"{Y}ISP Rating{W}", res_dict['client']['isprating']])
 
 for field in table.field_names:
     table.align[field] = "l"
