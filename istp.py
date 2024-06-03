@@ -187,7 +187,7 @@ if __name__ == "__main__":
     if 'SSID' in network_info:
         print(f"{INFO} SSID:{G}", network_info['SSID'])
 
-print(f"{sign} {W}If you are waiting for a long time in downloading click to exit {Y}[Ctrl {W}+{Y} C]{W}")
+input(f"{Enter} {Help}{W}")
 init(autoreset=True)
 print(f"{sign} {Y}Downloading to servers and information at internet speed.{W}")
 
