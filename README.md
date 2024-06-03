@@ -49,6 +49,8 @@ $ git clone https://github.com/MohmmadALbaqer/ISTP.git
 $ cd STP
 $ pip3 install -r requirements.txt
 $ python3 istp.py
+# if have you Termux to phone Android use command
+$ python3 istp_Termux.py
 ```
 ### ScreenShot
 ![Logo](istp.png)
