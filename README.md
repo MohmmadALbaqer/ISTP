@@ -52,6 +52,7 @@ $ python3 istp.py
 ```
 ### ScreenShot
 ![Logo](istp.png)
+![Logo](Android_Termux.png)
 
 ### work on systems
 
