@@ -1,13 +1,13 @@
 #!/bin/bash
 
-echo """
+echo "
   _           _        _ _ 
  (_)_ __  ___| |_ __ _| | |
  | | '_ \/ __| __/ _` | | |
  | | | | \__ \ || (_| | | |
  |_|_| |_|___/\__\__,_|_|_|
                            
-"""
+"
 
 if ! dpkg -l | grep -q python3-venv; then
   sudo apt update -qq
