@@ -227,9 +227,9 @@ def main_task():
 
     dwnl = f"{res_dict['download'] / 10**6:.2f}"
     upl = f"{res_dict['upload'] / 10**6:.2f}"
-    print("                                  ")
+    print(W)
     table = PrettyTable()
-
+    
     table.field_names = [f"{M}ID{W}", f"{B}INFORMATION{W}", f"{R}Information results{W}"]
 
     table.add_row([f"{G}1{W}", f"{Y}Download{W}", f"{B}{dwnl} {M}Mbps{W} ({B}{float(dwnl) * 0.125:.2f} {G}MB/s{W})"])
