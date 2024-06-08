@@ -47,6 +47,8 @@ In addition to improvements in the banner.
 ```
 $ git clone https://github.com/MohmmadALbaqer/ISTP.git
 $ cd STP
+$ chmod +x *
+$ sudo ./install.sh  OR  sudo bash install.sh
 $ pip3 install -r requirements.txt
 $ python3 istp.py
 # if have you Termux to phone Android use command
