@@ -22,7 +22,7 @@ C = "\033[96;1m"  # Cyan
 M = "\033[95;1m"  # Magenta
 W = "\033[97;1m"  # White
 D = "\033[90;1m"  # Grey
-S = "\033[0m"
+S = "\033[0m"     # Rest
 
 sign = "\033[92;1m" + "[" + "\033[94;1m" + "*" + "\033[92;1m" + "]" + "\033[94;1m"
 Enter = "\033[94;1m" + "[" + "\033[92;1m" + "+" + "\033[94;1m" + "]" + "\033[92;1m"
@@ -106,7 +106,7 @@ def Banner():
 │    {G}/\/\|/\/\    {B}|   |/        \ |    |   |    |{W}                │
 │   {G}/    |    \   {B}|___|_______  / |____|   |____| {Y}Version : 6{W}    │
 │  -     -     -        {B}      \/{W}                                 │     
-│ {Back.RED}{W} [Internet Speed Test Ping] {S}                                   │
+│ {Back.RED}{W} [Internet Speed Test Ping] {S}{W}                                   │
 ┣────────────────────────────────────────────────────────────────┫
 │    {Y}INSTAGRAM {W}| {B}https://www.instagram.com/r94xs/{W}                │
 │    {Y}GiTHub    {W}| {B}https://www.github.com/MohmmadALbaqer/{W}          │  
@@ -125,7 +125,7 @@ def Banner():
 │    {G}/\/\|/\/\    {B}|   |/        \ |    |   |    |{W}                │
 │   {G}/    |    \   {B}|___|_______  / |____|   |____| {Y}Version : 5{W}    │
 │  -     -     -        {B}      \/{W}                                 │     
-│ {Back.RED}{W} [Internet Speed Test Ping] {S}                                   │
+│ {Back.RED}{W} [Internet Speed Test Ping] {S}{W}                                   │
 ┣────────────────────────────────────────────────────────────────┫
 │    {Y}INSTAGRAM {W}| {B}https://www.instagram.com/r94xs/{W}                │
 │    {Y}GiTHub    {W}| {B}https://www.github.com/MohmmadALbaqer/{W}          │  
