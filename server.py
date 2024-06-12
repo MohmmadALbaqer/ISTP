@@ -79,7 +79,7 @@ def run_server():
         print(f"{INFO} Serving at port {G}{Port}{W}")
         httpd.serve_forever()
 
-print(f'{B}$ {G}{Localhost}{W}:{Y}{Port}{W}')
+print(f'{B}$ {G}http://{Localhost}{W}:{Y}{Port}{W}')
 
 def open_browser():
     webbrowser.open(f"http://localhost:{Port}")
