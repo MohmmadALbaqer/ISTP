@@ -3,8 +3,6 @@ import subprocess
 import re
 import os 
 
-os.system('cls')
-
 R = "\033[91;1m"  # Red
 G = "\033[92;1m"  # Green
 B = "\033[94;1m"  # Blue
@@ -25,6 +23,8 @@ Failed = "\033[93;1m" + "[" + "\033[91;1m" + "FAILED" + "\033[93;1m" + "]" + "\0
 please = "\033[93;1m" + "[" + "\033[91;1m" + "!" + "\033[93;1m" + "]" + "\033[91;1m"
 Question = "\033[95;1m" + "[" + "\033[96;1m" + "?" + "\033[95;1m" + "]" + "\033[97;1m"
 Help = "\033[97;1m" + "To continue anyway press or click" + "\033[94;1m" + " [" + "\033[92;1m" + "Enter" + "\033[94;1m" + "] " + "\033[97;1m" + "and to stop or exit" + "\033[93;1m" + " [" + "Ctrl" + "\033[97;1m" + " + " + "\033[93;1m" + "C" + "]" + "\033[0m"
+
+print(f"{INFO} system is {W}: {B}Windows{W}")
 
 def get_wifi_info():
     wifi_info = {}
