@@ -138,54 +138,40 @@ def Banner():
 
 Banner()
 
-def NetWorkWindows():
-    ssid = None
-    ip_address = None
+import platform
+import subprocess
+import os
 
-    ssid_result = subprocess.run(['netsh', 'wlan', 'show', 'interfaces'], capture_output=True, text=True)
-    ssid_info = ssid_result.stdout.split('\n')
-    for line in ssid_info:
-        if 'SSID' in line and 'BSSID' not in line:
-            ssid = line.split(':')[-1].strip()
-            break
+# تحديد نظام التشغيل
+system = platform.system()
 
-    ip_result = subprocess.run(['ipconfig'], capture_output=True, text=True)
-    ip_info = ip_result.stdout.split('\n')
-    for line in ip_info:
-        if 'IPv4 Address' in line or 'IPv4 Address. . . . . . . . . . . :' in line:
-            ip_address = line.split(':')[-1].strip()
-            if re.match(r'^\d+\.\d+\.\d+\.\d+$', ip_address): 
-                break
+if system == 'Windows':
+    directory = "Windows"
+    script = "Windows.py"
+elif system == 'Linux':
+    directory = "Linux"
+    script = "Linux.py"
+else:
+    raise NotImplementedError(f"Unsupported operating system: {system}")
 
-    return {'IPAddress': ip_address, 'SSID': ssid}
+# بناء المسار للملف المطلوب
+script_path = os.path.join(directory, script)
 
-def NetWorkLinux():
-    result = subprocess.run(['ip', 'addr', 'show'], capture_output=True, text=True)
-    ip_info = result.stdout.split('\n')
-    ip_address = None
-    for line in ip_info:
-        if 'inet ' in line and not line.strip().startswith('inet 127.'):
-            ip_address = line.split()[1].split('/')[0]
-            break
+# تغيير الدليل وتشغيل الملف
+try:
+    # تغيير الدليل إلى المسار المحدد
+    os.chdir(directory)
+    
+    # تشغيل الملف باستخدام Python
+    result = subprocess.run(['python', script], capture_output=True, text=True)
 
-    return {'IPAddress': ip_address}
+    # طباعة المخرجات
+    print(result.stdout)
+    if result.stderr:
+        print(result.stderr)
+except Exception as e:
+    print(f"An error occurred: {e}")
 
-def NetWork():
-    os_system = platform.system()
-    if os_system == "Windows":
-        print(f"{INFO} system is:{G} Windowd{W}")
-        return NetWorkWindows()
-    elif os_system == "Linux":
-        print(f"{INFO} system is:{G} Linux{W}")
-        return NetWorkLinux()
-    else:
-        return {'IPAddress': f'{Y}Not available now in you system!{W}'}
-
-if __name__ == "__main__":
-    network_info = NetWork()
-    print(f"{INFO} IPAddress:{G}", network_info['IPAddress'])
-    if 'SSID' in network_info:
-        print(f"{INFO} SSID:{G}", network_info['SSID'])
 
 input(f"{Enter} {Help}{W}")
 init(autoreset=True)
