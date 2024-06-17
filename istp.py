@@ -6,7 +6,6 @@ import speedtest
 import requests
 import subprocess
 import platform
-import re
 from time import sleep
 from tqdm import tqdm
 from colorama import Back, init
@@ -95,41 +94,27 @@ def Banner():
     try:
         if (operating_system == 'posix'):
             print(f"""
-┏────────────────────────────────────────────────────────────────┓
-│ {R}  {Y}  {G}  {W}                                                      │ 
-┣────────────────────────────────────────────────────────────────┫
-│      {G}\ | /{W}                                                     │
-│     {B}-- {R}O{B} --{W}                                                    │
-│       {G}/|\       {B} ___  ____________________________{W}             │
-│      {G}/\|/\      {B}|   |/   _____/__    ___/______   \{W}            │
-│     {G}/  |  \     {B}|   |\_____  \  |    |   |     ___/{W}            │
-│    {G}/\/\|/\/\    {B}|   |/        \ |    |   |    |{W}                │
-│   {G}/    |    \   {B}|___|_______  / |____|   |____| {Y}Version : 6{W}    │
-│  -     -     -        {B}      \/{W}                                 │     
-│ {Back.RED}{W} [Internet Speed Test Ping] {S}{W}                                   │
-┣────────────────────────────────────────────────────────────────┫
-│    {Y}INSTAGRAM {W}| {B}https://www.instagram.com/r94xs/{W}                │
-│    {Y}GiTHub    {W}| {B}https://www.github.com/MohmmadALbaqer/{W}          │  
-┗────────────────────────────────────────────────────────────────┛
+      {G}\ | /{W}                                                     
+     {B}-- {R}O{B} --{W}                                                    
+       {G}/|\       {B} ___  ____________________________{W}             
+      {G}/\|/\      {B}|   |/   _____/__    ___/______   \{W}            
+     {G}/  |  \     {B}|   |\_____  \  |    |   |     ___/{W}            
+    {G}/\/\|/\/\    {B}|   |/        \ |    |   |    |{W}                
+   {G}/    |    \   {B}|___|_______  / |____|   |____| {Y}Version : 6{W}
+  -     -     -        {B}      \/{W}                  {Y}My INSTAGRAM {W}: {M}r94xs{W}          
+ {Back.RED}{W} [Internet Speed Test Ping] {S}{W}
 """)
         elif (operating_system == 'nt'):
             print(f"""
-┏────────────────────────────────────────────────────────────────┓
-│ {R}● {Y}● {G}● {W}                                                         │ 
-┣────────────────────────────────────────────────────────────────┫
-│      {G}\ | /{W}                                                     │
-│     {B}-- {R}O{B} --{W}                                                    │
-│       {G}/|\       {B} ___  ____________________________{W}             │
-│      {G}/\|/\      {B}|   |/   _____/__    ___/______   \{W}            │
-│     {G}/  |  \     {B}|   |\_____  \  |    |   |     ___/{W}            │
-│    {G}/\/\|/\/\    {B}|   |/        \ |    |   |    |{W}                │
-│   {G}/    |    \   {B}|___|_______  / |____|   |____| {Y}Version : 5{W}    │
-│  -     -     -        {B}      \/{W}                                 │     
-│ {Back.RED}{W} [Internet Speed Test Ping] {S}{W}                                   │
-┣────────────────────────────────────────────────────────────────┫
-│    {Y}INSTAGRAM {W}| {B}https://www.instagram.com/r94xs/{W}                │
-│    {Y}GiTHub    {W}| {B}https://www.github.com/MohmmadALbaqer/{W}          │  
-┗────────────────────────────────────────────────────────────────┛
+      {G}\ | /{W}         
+     {B}-- {R}O{B} --{W}                                             
+       {G}/|\       {B} ___  ____________________________{W}             
+      {G}/\|/\      {B}|   |/   _____/__    ___/______   \{W}            
+     {G}/  |  \     {B}|   |\_____  \  |    |   |     ___/{W}            
+    {G}/\/\|/\/\    {B}|   |/        \ |    |   |    |{W}
+   {G}/    |    \   {B}|___|_______  / |____|   |____| {Y}Version : 6{W}
+  -     -     -        {B}      \/{W}                  {Y}My INSTAGRAM {W}: {M}r94xs{W}                
+ {Back.RED}{W} [Internet Speed Test Ping] {S}{W}
 """)
         else:
             print(f"{please} System unknown!{S}")
@@ -138,11 +123,6 @@ def Banner():
 
 Banner()
 
-import platform
-import subprocess
-import os
-
-# تحديد نظام التشغيل
 system = platform.system()
 
 if system == 'Windows':
@@ -154,24 +134,18 @@ elif system == 'Linux':
 else:
     raise NotImplementedError(f"Unsupported operating system: {system}")
 
-# بناء المسار للملف المطلوب
 script_path = os.path.join(directory, script)
 
-# تغيير الدليل وتشغيل الملف
 try:
-    # تغيير الدليل إلى المسار المحدد
     os.chdir(directory)
     
-    # تشغيل الملف باستخدام Python
     result = subprocess.run(['python', script], capture_output=True, text=True)
 
-    # طباعة المخرجات
     print(result.stdout)
     if result.stderr:
         print(result.stderr)
 except Exception as e:
     print(f"An error occurred: {e}")
-
 
 input(f"{Enter} {Help}{W}")
 init(autoreset=True)
