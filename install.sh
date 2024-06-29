@@ -4,11 +4,9 @@ clear
 
 if [ "$(uname)" == "Linux" ]; then
     echo "[+] System: Linux"
-    sudo rm -rf istp_Termux.py 
 elif [ "$(uname)" == "Android" ]; then
     if [ -d "/data/data/com.termux" ]; then
         echo "[+] System: Termux/Android"
-        rm -rf istp.py
     else
         echo "[!] This is Android but not Termux!"
     fi
