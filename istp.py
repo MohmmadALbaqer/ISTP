@@ -116,6 +116,18 @@ def Banner():
   -     -     -        {B}      \/{W}                  {Y}My INSTAGRAM {W}: {M}r94xs{W}                
  {Back.RED}{W} [Internet Speed Test Ping] {S}{W}
 """)
+        elif (operating_system == 'Darwin'):
+            print(f"""
+      {G}\ | /{W}         
+     {B}-- {R}O{B} --{W}                                             
+       {G}/|\       {B} ___  ____________________________{W}             
+      {G}/\|/\      {B}|   |/   _____/__    ___/______   \{W}            
+     {G}/  |  \     {B}|   |\_____  \  |    |   |     ___/{W}            
+    {G}/\/\|/\/\    {B}|   |/        \ |    |   |    |{W}
+   {G}/    |    \   {B}|___|_______  / |____|   |____| {Y}Version : 6{W}
+  -     -     -        {B}      \/{W}                  {Y}My INSTAGRAM {W}: {M}r94xs{W}                
+ {Back.RED}{W} [Internet Speed Test Ping] {S}{W}
+""")
         else:
             print(f"{please} System unknown!{S}")
 
@@ -137,6 +149,9 @@ if system == 'Windows':
 elif system == 'Linux':
     directory = "Linux"
     script = "Linux.py"
+elif system == 'Darwin':
+    directory = "MacBook"
+    script = "MacBook.py"
 else:
     raise NotImplementedError(f"Unsupported operating system: {system}")
 
