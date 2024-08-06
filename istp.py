@@ -118,9 +118,15 @@ def Banner():
 """)
         else:
             print(f"{please} System unknown!{S}")
-    except Exception as e:
-        print(f"{ERROR}{W}: {e}")
 
+    except Exception:
+        pass
+
+        try:
+            if 'ANDROID_ROOT' in os.environ:
+                os.system("cd Android && python istp.py")
+        except Exception:
+            pass
 Banner()
 
 system = platform.system()
